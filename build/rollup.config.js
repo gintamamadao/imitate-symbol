@@ -32,4 +32,5 @@ module.exports = {
         commonjs({ extensions, ignore: ["conditional-runtime-dependency"] }),
         babel(babelOptions),
     ],
+    external: ["uuid"],
 };

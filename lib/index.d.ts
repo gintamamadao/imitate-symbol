@@ -1,2 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
-export default uuidv4;
+declare function imitateSymbol(name?: string): void;
+declare namespace imitateSymbol {
+    var for: (name: string) => any;
+}
+export default imitateSymbol;

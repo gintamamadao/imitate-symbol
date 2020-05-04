@@ -1,0 +1,42 @@
+{
+    "name": "imitate-symbol",
+    "version": "0.0.1",
+    "description": "imitate-symbol",
+    "main": "index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "directories": {
+        "build": "node_modules/.bin/rollup -c ./build/rollup.config.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gintamamadao/imitate-symbol.git"
+    },
+    "author": "gintamamadao",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/gintamamadao/imitate-symbol/issues"
+    },
+    "homepage": "https://github.com/gintamamadao/imitate-symbol#readme",
+    "dependencies": {
+        "uuid": "^8.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "@babel/preset-env": "^7.4.5",
+        "jest": "^24.8.0",
+        "rollup": "^1.26.3",
+        "rollup-plugin-babel": "^4.3.2",
+        "rollup-plugin-commonjs": "^10.0.0",
+        "rollup-plugin-typescript2": "^0.27.0",
+        "tslib": "^1.9.3",
+        "typescript": "^3.5.1",
+        "tslint": "^6.1.2",
+        "tslint-microsoft-contrib": "^6.2.0"
+    }
+}

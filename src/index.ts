@@ -16,12 +16,19 @@ const imitateSymbol: Ifunc & IObj = function (name?: string) {
         uuid = uuidv4();
     }
     IdSet.add(uuid);
-    this.toString = this.valueOf = () => {
+    if (new.target === imitateSymbol && this) {
+        this.toString = this.valueOf = () => {
+            return uuid;
+        };
+        if (name) {
+            this.name = name;
+            IdMap[name] = uuid;
+        }
+    } else {
+        if (name) {
+            IdMap[name] = uuid;
+        }
         return uuid;
-    };
-    if (name) {
-        this.name = name;
-        IdMap[name] = uuid;
     }
 };
 
@@ -38,12 +45,13 @@ imitateSymbol.for = (name: string) => {
     return uuid;
 };
 
-imitateSymbol.keyFor = (uuid: string) => {
+imitateSymbol.keyFor = (uuid: string): string => {
     for (const key of Object.keys(IdMap)) {
         if (IdMap[key] === uuid) {
-            return IdMap[key];
+            return key;
         }
     }
+    return "";
 };
 
 export default imitateSymbol;

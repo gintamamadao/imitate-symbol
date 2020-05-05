@@ -24,7 +24,7 @@ const babelOptions = {
 module.exports = {
     input: util.resolve("src/index.ts"),
     output: {
-        file: util.resolve("lib/schema-verify.js"),
+        file: util.resolve("lib/imitate-symbol.js"),
         format: "cjs",
     },
     plugins: [

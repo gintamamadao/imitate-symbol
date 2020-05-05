@@ -15,7 +15,7 @@ console.log(imitateSymbol.keyFor(`${a}`)); // a
 var b = imitateSymbol("d");
 console.log(b); // 63b86a81-5585-4f3a-bd76-fa5ec3c540ec
 console.log(imitateSymbol.for("b")); // 63b86a81-5585-4f3a-bd76-fa5ec3c540ec
-console.log(imitateSymbol.keyFor(`${b}`)); // b
+console.log(imitateSymbol.keyFor(b)); // b
 
 var c = imitateSymbol();
 console.log(c); // 2923ce23-9205-4bf1-beaf-8e0779bc7e3e

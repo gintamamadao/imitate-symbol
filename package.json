@@ -1,6 +1,6 @@
 {
     "name": "imitate-symbol",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "模拟 Symbol 的功能",
     "main": "./lib/imitate-symbol.js",
     "types": "./lib/index.d.ts",
@@ -24,6 +24,9 @@
         "@types/uuid": "^7.0.3",
         "uuid": "^8.0.0"
     },
+    "keywords": [
+        "symbol"
+    ],
     "devDependencies": {
         "@babel/core": "^7.4.5",
         "@babel/preset-env": "^7.4.5",

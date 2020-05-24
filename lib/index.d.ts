@@ -1,7 +1,7 @@
-interface IObj {
+interface ISymbol {
+    (name?: string): string;
     for(key: string): string;
     keyFor(key: string): string;
 }
-declare type Ifunc = (name?: string) => void;
-declare const imitateSymbol: Ifunc & IObj;
+declare const imitateSymbol: ISymbol;
 export default imitateSymbol;

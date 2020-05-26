@@ -107,7 +107,7 @@ Type: `any`
 var obj = {
     key: "key value",
 };
-isymbol.setVal(obj, "val", "val value");
-console.log(obj[isymbol.for("val")]); // val value
+iSymbol.setVal(obj, "val", "val value");
+console.log(obj[iSymbol.for("val")]); // val value
 console.log(JSON.stringify(obj)); // {"key":"key value"}
 ```

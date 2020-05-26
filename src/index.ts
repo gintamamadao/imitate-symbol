@@ -9,7 +9,7 @@ interface ISymbol {
     for(key: string): string;
     keyFor(key: string): string;
     is(key: string): boolean;
-    setVal<T = any>(obj: T, key: string, value: any): T;
+    setVal<T extends Object>(obj: T, key: string, value: any): T;
 }
 
 const imitateSymbol: ISymbol = (name?: string) => {

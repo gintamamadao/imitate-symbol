@@ -1,6 +1,6 @@
 {
     "name": "imitate-symbol",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "模拟 Symbol 的功能",
     "main": "./lib/imitate-symbol.js",
     "types": "./lib/index.d.ts",

@@ -12,8 +12,8 @@
 import imitateSymbol from "imitate-symbol";
 
 var val = imitateSymbol("val");
-console.log(val); // 63b86a81-5585-4f3a-bd76-fa5ec3c540ec
-console.log(imitateSymbol.for("val")); // 63b86a81-5585-4f3a-bd76-fa5ec3c540ec
+console.log(val); // 8039bc24-52f0c187-1fd1-4695-99a1-3f0657e61642
+console.log(imitateSymbol.for("val")); // 8039bc24-52f0c187-1fd1-4695-99a1-3f0657e61642
 console.log(imitateSymbol.keyFor(val)); // val
 ```
 

@@ -53,10 +53,21 @@ imitateSymbol.is = (val: string): boolean => {
     return IdSet.has(val);
 };
 
-imitateSymbol.setVal = <T = any>(obj: T, key: string, value: any): T => {
-    Object.defineProperty(obj, imitateSymbol.for(key), {
+imitateSymbol.setVal = <T extends Object>(
+    obj: T,
+    key: string,
+    value: any
+): T => {
+    const iKey = imitateSymbol.is(key) ? key : imitateSymbol.for(key);
+    if (obj.hasOwnProperty(iKey)) {
+        obj[iKey] = value;
+        return obj;
+    }
+    Object.defineProperty(obj, iKey, {
         value: value,
+        configurable: true,
         enumerable: false,
+        writable: true,
     });
     return obj;
 };

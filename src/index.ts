@@ -2,20 +2,23 @@ import { v4 as uuidv4 } from "uuid";
 
 const IdMap: any = {};
 const IdSet = new Set();
+const SIGN = `${uuidv4().slice(0, 9)}`;
 
 interface ISymbol {
     (name?: string): string;
     for(key: string): string;
     keyFor(key: string): string;
+    is(key: string): boolean;
+    setVal<T = any>(obj: T, key: string, value: any): T;
 }
 
 const imitateSymbol: ISymbol = (name?: string) => {
     if (name && IdMap[name]) {
         return IdMap[name];
     }
-    let uuid = uuidv4();
+    let uuid = SIGN + uuidv4();
     while (IdSet.has(uuid)) {
-        uuid = uuidv4();
+        uuid = SIGN + uuidv4();
     }
     IdSet.add(uuid);
     if (name) {
@@ -28,9 +31,9 @@ imitateSymbol.for = (name: string) => {
     if (IdMap[name]) {
         return IdMap[name];
     }
-    let uuid = uuidv4();
+    let uuid = SIGN + uuidv4();
     while (IdSet.has(uuid)) {
-        uuid = uuidv4();
+        uuid = SIGN + uuidv4();
     }
     IdSet.add(uuid);
     IdMap[name] = uuid;
@@ -44,6 +47,18 @@ imitateSymbol.keyFor = (val: string): string => {
         }
     }
     return "";
+};
+
+imitateSymbol.is = (val: string): boolean => {
+    return IdSet.has(val);
+};
+
+imitateSymbol.setVal = <T = any>(obj: T, key: string, value: any): T => {
+    Object.defineProperty(obj, imitateSymbol.for(key), {
+        value: value,
+        enumerable: false,
+    });
+    return obj;
 };
 
 export default imitateSymbol;

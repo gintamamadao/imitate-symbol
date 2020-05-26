@@ -8,23 +8,23 @@
 
 ## 实例
 
-```javascript
-import imitateSymbol from "imitate-symbol";
+```js
+import iSymbol from "imitate-symbol";
 
-var val = imitateSymbol("val");
+var val = iSymbol("val");
 console.log(val); // 8039bc24-52f0c187-1fd1-4695-99a1-3f0657e61642
-console.log(imitateSymbol.for("val")); // 8039bc24-52f0c187-1fd1-4695-99a1-3f0657e61642
-console.log(imitateSymbol.keyFor(val)); // val
+console.log(iSymbol.for("val")); // 8039bc24-52f0c187-1fd1-4695-99a1-3f0657e61642
+console.log(iSymbol.keyFor(val)); // val
 ```
 
 ## API
 
-### `imitateSymbol(name?);`
+### `iSymbol(name?);`
 
 生成一个 uuid
 
-```javascript
-var val = imitateSymbol("val");
+```js
+var val = iSymbol("val");
 ```
 
 #### name
@@ -33,12 +33,12 @@ Type: `String`
 
 一个标识 uuid 的名字，可以不输入
 
-### `imitateSymbol.for(name);`
+### `iSymbol.for(name);`
 
 查找标识为 name 的 uuid，如果没有就返回一个新生成的 uuid，并将其标识为 name
 
-```javascript
-imitateSymbol.for("val");
+```js
+iSymbol.for("val");
 ```
 
 #### name
@@ -47,12 +47,12 @@ Type: `String`
 
 一个标识 uuid 的名字，必须输入
 
-### `imitateSymbol.keyFor(val);`
+### `iSymbol.keyFor(val);`
 
 查找 uuid 的标识名，如果没有就返回空字符串
 
-```javascript
-imitateSymbol.keyFor(val);
+```js
+iSymbol.keyFor(val);
 ```
 
 #### val
@@ -60,3 +60,54 @@ imitateSymbol.keyFor(val);
 Type: `String`
 
 uuid 的值，必须输入
+
+### `iSymbol.is(val);`
+
+判断 uuid 是否由 iSymbol 生成
+
+```js
+iSymbol.is(val);
+```
+
+#### val
+
+Type: `String`
+
+uuid 的值，必须输入
+
+### `iSymbol.setVal(obj, key, value);`
+
+将对象 obj 的 key 属性的值设置为 value, 和原生 Symbol 属性一样， key 属性不可以枚举，但可以删除和重新赋值
+
+```js
+iSymbol.setVal({}, "val", "some value");
+```
+
+#### obj
+
+Type: `Object`
+
+要设置值的对象
+
+#### key
+
+Type: `String`
+
+要设置的属性名
+
+#### value
+
+Type: `any`
+
+要设置的属性值
+
+#### 例子
+
+```js
+var obj = {
+    key: "key value",
+};
+isymbol.setVal(obj, "val", "val value");
+console.log(obj[isymbol.for("val")]); // val value
+console.log(JSON.stringify(obj)); // {"key":"key value"}
+```
